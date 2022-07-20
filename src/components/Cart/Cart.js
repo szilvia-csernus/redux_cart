@@ -1,10 +1,18 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { sendCartData } from '../../store/cart-action-creators';
 import Card from '../UI/Card';
 import classes from './Cart.module.css';
 import CartItem from './CartItem';
 
 const Cart = (props) => {
-  const cartItems = useSelector(state => state.cart.items)
+  const cart = useSelector(state => state.cart)
+  const cartItems = cart.items;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(sendCartData(cart))
+  }, [cart, dispatch])
 
   return (
     <Card className={classes.cart}>
@@ -24,6 +32,8 @@ const Cart = (props) => {
       </ul>
     </Card>
   );
+
+
 };
 
 export default Cart;

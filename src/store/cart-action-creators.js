@@ -50,9 +50,8 @@ export const fetchCartData = () => {
   }
 }
 
-// the 'dispatch' fuction is handed over here (by redux) when we call 'dispatch' giving this thunk
-// to it as an argument. (in App.js)
 export const sendCartData = (cart) => {
+  
   return async (dispatch) => {
     dispatch(
       uiActions.showNotification({
@@ -61,6 +60,7 @@ export const sendCartData = (cart) => {
         message: "Sending cart data.",
       })
     );
+
 
     const sendRequest = async () => {
       const response = await fetch(
