@@ -13,6 +13,9 @@ function App() {
   const notification = useSelector((state) => state.ui.notification);
 
   useEffect(() => {
+    // this is a 'thunk', when we call 'dispatch' with an action creator function.
+    // The 'dispatch' function is handed over (by redux) and used in the action
+    // creator itself when its getting executed.
     dispatch(fetchCartData());
   }, [dispatch]);
 
